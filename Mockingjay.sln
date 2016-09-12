@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockingjaySpecyfication", "MockingjaySpecyfication\MockingjaySpecyfication.csproj", "{FA425F4D-CCBC-4742-9079-FD1EA52469D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockingJay", "MockingEngine\MockingJay.csproj", "{9E3A1A3B-9F63-4CF5-A718-F1064E10F1B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomLogger", "Logger\CustomLogger.csproj", "{4F616FAC-B776-42ED-B297-9CAB86EE86EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockingJayServer", "MockingJayServer\MockingJayServer.csproj", "{0290F675-5F35-424A-B212-4AF60A9A32BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockingJayRoutes", "MockingJayRoutes\MockingJayRoutes.csproj", "{60120C05-918A-4F42-86EB-8ABCC102D339}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA425F4D-CCBC-4742-9079-FD1EA52469D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA425F4D-CCBC-4742-9079-FD1EA52469D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA425F4D-CCBC-4742-9079-FD1EA52469D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA425F4D-CCBC-4742-9079-FD1EA52469D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E3A1A3B-9F63-4CF5-A718-F1064E10F1B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E3A1A3B-9F63-4CF5-A718-F1064E10F1B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E3A1A3B-9F63-4CF5-A718-F1064E10F1B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E3A1A3B-9F63-4CF5-A718-F1064E10F1B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F616FAC-B776-42ED-B297-9CAB86EE86EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F616FAC-B776-42ED-B297-9CAB86EE86EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F616FAC-B776-42ED-B297-9CAB86EE86EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F616FAC-B776-42ED-B297-9CAB86EE86EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0290F675-5F35-424A-B212-4AF60A9A32BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0290F675-5F35-424A-B212-4AF60A9A32BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0290F675-5F35-424A-B212-4AF60A9A32BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0290F675-5F35-424A-B212-4AF60A9A32BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60120C05-918A-4F42-86EB-8ABCC102D339}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60120C05-918A-4F42-86EB-8ABCC102D339}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60120C05-918A-4F42-86EB-8ABCC102D339}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60120C05-918A-4F42-86EB-8ABCC102D339}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
