@@ -1,4 +1,5 @@
 ﻿using System.Collections.Specialized;
+using System.Text;
 
 namespace MockingJayRoutes
 {
@@ -8,5 +9,6 @@ namespace MockingJayRoutes
         NameValueCollection Headers { get; set; }
         string HttpMethod { get; set; }
         string Url { get; }
+        Encoding ContentEncoding { get; set; }
     }
 }

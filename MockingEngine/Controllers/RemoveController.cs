@@ -15,7 +15,7 @@ namespace MockingJay.Controllers
         public void Invoke(IHttpContext httpContext)
         {
             var response = httpContext.Response;
-            if(httpContext.Request.HttpMethod == "DELETE")
+            if(httpContext.Request.HttpMethod == "PUT")
             {
                 Request request = JsonConvert.DeserializeObject<Request>(httpContext.Request.ContentBody);
                 _mockingJayApp.DeleteRequest(request);

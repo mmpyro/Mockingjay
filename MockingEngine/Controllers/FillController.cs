@@ -26,7 +26,7 @@ namespace MockingJay.Controllers
             var response = httpContext.Response;
 
             response.StatusCode = responseStructure.StatusCode;
-            response.FillContent(responseStructure.Content, Encoding.UTF8);
+            response.FillContent(responseStructure.Content, httpContext.Request.ContentEncoding);
             responseStructure.Headers.ForEach(t => response.Headers.Add(t.Name, t.Value));
             response.Close();
         }

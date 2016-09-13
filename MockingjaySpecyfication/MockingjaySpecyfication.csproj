@@ -65,6 +65,7 @@
     <Compile Include="ConfigurationSpecification.cs" />
     <Compile Include="Helpers\RequestBuilder.cs" />
     <Compile Include="MockingJaySpecification.cs" />
+    <Compile Include="PageSpecification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RouteManagerSpecification.cs" />
     <Compile Include="StructureSpecification.cs" />

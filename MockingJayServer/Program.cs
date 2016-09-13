@@ -6,6 +6,7 @@ using MockingJay.Controllers;
 using static System.Console;
 using MockingJay;
 using MockingJay.Validation;
+using MockingJayRoutes.helpers;
 
 namespace MockingJayServer
 {
@@ -14,7 +15,7 @@ namespace MockingJayServer
         static void Main(string[] args)
         {
             ILogger logger = new GenericLogger();
-            const string url = "http://localhost:51111/mockingJay/";
+            const string url = "http://localhost:51111/";
             try
             {
                 var app = new MockingJayApp(new MockEngine(), new ComplexValidator(
@@ -23,9 +24,11 @@ namespace MockingJayServer
                                                                 new StatusValidator()));
 
                 var route = new RouteManager();
-                route.Add($"{url}register", new RegisterController(app));
-                route.Add($"{url}remove/all", new RemoveAllController(app));
-                route.Add($"{url}remove", new RemoveController(app));
+                route.Add($"{url}mockingJay/register", new RegisterController(app));
+                route.Add($"{url}mockingJay/remove/all", new RemoveAllController(app));
+                route.Add($"{url}mockingJay/remove", new RemoveController(app));
+                route.Add($"{url}mockingJay/requests", new GetAllRequestsController(app, new ParserFactory() 
+                                                                                        ,new PageBuilder<Request>()));
                 route.Add("*", new FillController(app));
 
                 using (var server = new HttpServer(url,

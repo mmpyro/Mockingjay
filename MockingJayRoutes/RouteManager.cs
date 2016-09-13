@@ -12,9 +12,13 @@ namespace MockingJayRoutes
             try
             {
                 IHttpRequest request = context.Request;
-                if (_dict.ContainsKey(request.Url))
+                string url = request.Url;
+                if (request.Url.IndexOf("?") > 0)
+                    url = request.Url.Substring(0, url.IndexOf("?"));
+
+                if (_dict.ContainsKey(url))
                 {
-                    IController controller = _dict[request.Url];
+                    IController controller = _dict[url];
                     controller.Invoke(context);
                 }
                 else
@@ -28,12 +32,14 @@ namespace MockingJayRoutes
                 var response = context.Response;
                 response.StatusCode = 404;
                 response.ContentType = "application/json";
+                response.Close();
             }
             catch(Exception)
             {
                 var response = context.Response;
-                response.StatusCode = 500;
                 response.ContentType = "application/json";
+                response.StatusCode = 500;
+                response.Close();
             }
         }
 

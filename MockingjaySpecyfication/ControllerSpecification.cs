@@ -8,6 +8,8 @@ using System.Linq;
 using MockingjaySpecyfication.Helpers;
 using System.Collections.Specialized;
 using System.Text;
+using System;
+using MockingJayRoutes.helpers;
 
 namespace MockingjaySpecyfication
 {
@@ -125,7 +127,7 @@ namespace MockingjaySpecyfication
             var response = Substitute.For<IHttpResponse>();
             var request = Substitute.For<IHttpRequest>();
             request.ContentBody.Returns(t => reqJson);
-            request.HttpMethod.Returns(t => "DELETE");
+            request.HttpMethod.Returns(t => "PUT");
             request.Url.Returns(t => url);
             var mockingJayApp = new MockingJayApp(new MockEngine(), CreateComplexValidator());
             RouteManager routes = new RouteManager();
@@ -152,7 +154,7 @@ namespace MockingjaySpecyfication
             var response = Substitute.For<IHttpResponse>();
             var request = Substitute.For<IHttpRequest>();
             request.ContentBody.Returns(t => reqJson);
-            request.HttpMethod.Returns(t => "PUT");
+            request.HttpMethod.Returns(t => "DELETE");
             request.Url.Returns(t => url);
             var mockingJayApp = new MockingJayApp(new MockEngine(), CreateComplexValidator());
             RouteManager routes = new RouteManager();
@@ -193,6 +195,38 @@ namespace MockingjaySpecyfication
             Assert.That(response.StatusCode, Is.EqualTo(200));
             Assert.That(response.Body, Is.EqualTo("hello world"));
             Assert.That(response.Headers["Etag"], Is.EqualTo("0000"));
+        }
+
+        [Test]
+        public void ShouldReturnsAllRegisteredRequests()
+        {
+            //Given
+            const string url = "http://localhost:8080/mockingJay/requests?items=10&page=0";
+            var request = Substitute.For<IHttpRequest>();
+            var response = Substitute.For<IHttpResponse>();
+            request.HttpMethod.Returns(t => "GET");
+            request.Url.Returns(t => url);
+            var mockingJayApp = new MockingJayApp(new MockEngine(), CreateComplexValidator());
+            RouteManager routes = new RouteManager();
+            routes.Add("http://localhost:8080/mockingJay/requests", new GetAllRequestsController(mockingJayApp,
+                                                                                        new ParserFactory(),
+                                                                                        new PageBuilder<Request>()));
+            var context = Substitute.For<IHttpContext>();
+            context.Request = request;
+            context.Response = response;
+            RegisterManyMessages(mockingJayApp, 20);
+            //When
+            routes.Resolve(context);
+            //Then
+            response.Received().FillContent(Arg.Any<string>(), Arg.Any<Encoding>());
+            Assert.That(response.StatusCode, Is.EqualTo(200));
+        }
+
+        private void RegisterManyMessages(MockingJayApp mockingJayApp, int number)
+        {
+            for (int i = 0; i < number; i++) {
+                mockingJayApp.RegisterMessageIfValid(configBuilder.WithUrl("aa"+i));
+            }
         }
 
         private IValidator CreateComplexValidator()

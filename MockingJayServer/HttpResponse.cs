@@ -15,9 +15,6 @@ namespace MockingJayServer
         {
             _response = response;
             response.ContentType = "application/json";
-            ContentType = response.ContentType;
-            StatusCode = response.StatusCode;
-            Headers = response.Headers;
         }
 
         public string Body
@@ -33,11 +30,45 @@ namespace MockingJayServer
             }
         }
 
-        public string ContentType { get; set; }
+        public string ContentType
+        {
+            get
+            {
+                return _response.ContentType;
+            }
+            set
+            {
+                _response.ContentType = value;
+            }
+        }
 
-        public NameValueCollection Headers { get; set; }
+        public NameValueCollection Headers
+        {
+            get
+            {
+                return _response.Headers;
+            }
+            set
+            {
+                _response.Headers.Clear();
+                foreach(string key in value)
+                {
+                    _response.Headers.Add(key, value[key]);
+                }
+            }
+        }
 
-        public int StatusCode { get; set; }
+        public int StatusCode
+        {
+            get
+            {
+                return _response.StatusCode;
+            }
+            set
+            {
+                _response.StatusCode = value;
+            }
+        }
 
         public void Close()
         {
