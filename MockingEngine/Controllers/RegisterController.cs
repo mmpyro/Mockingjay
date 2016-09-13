@@ -21,11 +21,12 @@ namespace MockingJay.Controllers
             {
                 Configuration conf = JsonConvert.DeserializeObject<Configuration>(request.ContentBody);
                 _mockingJayApp.RegisterMessageIfValid(conf);
-                response.StatusCode = 200;
+                response.StatusCode = 201;
+                response.Headers.Add("Location", conf.Url);
             }
             else
             {
-                response.StatusCode = 500;
+                response.StatusCode = 404;
             }
             response.Close();
         }

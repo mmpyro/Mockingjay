@@ -14,11 +14,18 @@ namespace MockingJay.Controllers
 
         public void Invoke(IHttpContext httpContext)
         {
+            var response = httpContext.Response;
             if(httpContext.Request.HttpMethod == "DELETE")
             {
                 Request request = JsonConvert.DeserializeObject<Request>(httpContext.Request.ContentBody);
                 _mockingJayApp.DeleteRequest(request);
+                response.StatusCode = 204;
             }
+            else
+            {
+                response.StatusCode = 404;
+            }
+            response.Close();
         }
     }
 }

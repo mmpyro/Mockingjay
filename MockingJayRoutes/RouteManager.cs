@@ -23,10 +23,16 @@ namespace MockingJayRoutes
                     controller.Invoke(context);
                 }
             }
-            catch(KeyNotFoundException ex)
+            catch(KeyNotFoundException)
             {
                 var response = context.Response;
                 response.StatusCode = 404;
+                response.ContentType = "application/json";
+            }
+            catch(Exception)
+            {
+                var response = context.Response;
+                response.StatusCode = 500;
                 response.ContentType = "application/json";
             }
         }

@@ -1,6 +1,7 @@
 ﻿using MockingJayRoutes;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace MockingJay.Controllers
 {
@@ -18,12 +19,15 @@ namespace MockingJay.Controllers
             Request request = new Request
             {
                 Url = httpContext.Request.Url,
-                Type = (HttpMethodType) Enum.Parse(typeof(HttpMethodType), httpContext.Request.HttpMethod)
+                Type = (HttpMethodType) Enum.Parse(typeof(HttpMethodType), httpContext.Request.HttpMethod),
             };
             FillHeadersIfExists(httpContext,request);
             var responseStructure = mockingJayApp.Resolve(request);
             var response = httpContext.Response;
+
             response.StatusCode = responseStructure.StatusCode;
+            response.FillContent(responseStructure.Content, Encoding.UTF8);
+            responseStructure.Headers.ForEach(t => response.Headers.Add(t.Name, t.Value));
             response.Close();
         }
 
