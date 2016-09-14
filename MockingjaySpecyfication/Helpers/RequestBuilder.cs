@@ -13,7 +13,7 @@ namespace MockingjaySpecyfication.Helpers
             _req = new Request
             {
                 Url = "/users",
-                Type = HttpMethodType.GET
+                Type = HttpMethodType.GET.ToString()
             };
         }
 
@@ -25,13 +25,13 @@ namespace MockingjaySpecyfication.Helpers
 
         public RequestBuilder Get()
         {
-            _req.Type = HttpMethodType.GET;
+            _req.Type = HttpMethodType.GET.ToString();
             return this;
         }
 
         public RequestBuilder Post()
         {
-            _req.Type = HttpMethodType.POST;
+            _req.Type = HttpMethodType.POST.ToString();
             return this;
         }
 
@@ -45,7 +45,7 @@ namespace MockingjaySpecyfication.Helpers
         protected void Reset()
         {
             _req.Url = "/users";
-            _req.Type = HttpMethodType.GET;
+            _req.Type = HttpMethodType.GET.ToString();
             _req.Headers.Clear();
         }
 

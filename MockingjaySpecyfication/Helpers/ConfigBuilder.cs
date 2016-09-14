@@ -13,7 +13,7 @@ namespace MockingjaySpecyfication.Helpers
             _configuration = new Configuration
             {
                 Url = "/users",
-                Type = HttpMethodType.GET,
+                Type = HttpMethodType.GET.ToString(),
                 Return = new Response
                 {
                     Content = null,
@@ -25,37 +25,37 @@ namespace MockingjaySpecyfication.Helpers
 
         public ConfigBuilder Get()
         {
-            _configuration.Type = HttpMethodType.GET;
+            _configuration.Type = HttpMethodType.GET.ToString();
             return this;
         }
 
         public ConfigBuilder Post()
         {
-            _configuration.Type = HttpMethodType.POST;
+            _configuration.Type = HttpMethodType.POST.ToString();
             return this;
         }
 
         public ConfigBuilder Delete()
         {
-            _configuration.Type = HttpMethodType.DELETE;
+            _configuration.Type = HttpMethodType.DELETE.ToString();
             return this;
         }
 
         public ConfigBuilder Put()
         {
-            _configuration.Type = HttpMethodType.PUT;
+            _configuration.Type = HttpMethodType.PUT.ToString();
             return this;
         }
 
         public ConfigBuilder Patch()
         {
-            _configuration.Type = HttpMethodType.PATCH;
+            _configuration.Type = HttpMethodType.PATCH.ToString();
             return this;
         }
 
         public ConfigBuilder Head()
         {
-            _configuration.Type = HttpMethodType.HEAD;
+            _configuration.Type = HttpMethodType.HEAD.ToString();
             return this;
         }
 
@@ -97,7 +97,7 @@ namespace MockingjaySpecyfication.Helpers
         protected void Reset()
         {
             _configuration.Url = "/users";
-            _configuration.Type = HttpMethodType.GET;
+            _configuration.Type = HttpMethodType.GET.ToString();
             _configuration.Headers.Clear();
             _configuration.Return = new Response
             {

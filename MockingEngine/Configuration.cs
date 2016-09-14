@@ -7,7 +7,7 @@ namespace MockingJay
     public class Configuration
     {
         public Response Return { get; set; }
-        public HttpMethodType Type { get; set; }
+        public string Type { get; set; }
         public List<Header> Headers { get; set; }
         public string Url { get; set; }
 
@@ -30,7 +30,7 @@ namespace MockingJay
     public class Request
     {
         public string Url { get; set; }
-        public HttpMethodType Type { get; set; }
+        public string Type { get; set; }
         public List<Header> Headers { get; set; }
 
         public Request()

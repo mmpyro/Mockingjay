@@ -67,6 +67,7 @@
     <Compile Include="MockingJaySpecification.cs" />
     <Compile Include="PageSpecification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportSpecification.cs" />
     <Compile Include="RouteManagerSpecification.cs" />
     <Compile Include="StructureSpecification.cs" />
   </ItemGroup>

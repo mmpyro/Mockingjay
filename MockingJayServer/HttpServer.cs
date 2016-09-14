@@ -4,6 +4,7 @@ using CustomLogger;
 using System.Threading.Tasks;
 using System.Net;
 using MockingJayRoutes;
+using MockingJay;
 
 namespace MockingJayServer
 {
@@ -17,13 +18,14 @@ namespace MockingJayServer
         private static object locker = new object();
         private static CancellationTokenSource source;
         private static CancellationToken token;
-        
+        private readonly ReportGenerator _reportGenerator;
 
-        public HttpServer(string address, HttpListener listener, RouteManager route, ILogger logger)
+        public HttpServer(string address, HttpListener listener, RouteManager route, ILogger logger, ReportGenerator reportGenerator)
         {
             _logger = logger;
             _listener = listener;
             _route = route;
+            _reportGenerator = reportGenerator;
             _listener.Prefixes.Add(address);
         }
 
@@ -51,17 +53,24 @@ namespace MockingJayServer
                     while (!token.IsCancellationRequested)
                     {
                         var context = _listener.GetContext();
-                        Log(context.Request);
-                        _route.Resolve(new HttpContext(context));
+                        var httpContext = new HttpContext(context);
+                        Log(httpContext.Request);
+                        _route.Resolve(httpContext);
                     }
                 }
-                catch { }
+                catch(Exception ex) {
+                    if (!ex.Message.Equals("The I/O operation has been aborted because of either a thread exit or an application request"
+                        , StringComparison.OrdinalIgnoreCase))
+                    {
+                        _logger.Error(ex);
+                    }
+                }
             }, TaskCreationOptions.LongRunning);
         }
 
-        private void Log(HttpListenerRequest request)
+        private void Log(IHttpRequest request)
         {
-            _logger.Info($"Received: {request.Url.AbsoluteUri}, Method: {request.HttpMethod}");
+            _logger.Info(_reportGenerator.CreateReport(request));
         }
 
         public void Dispose()

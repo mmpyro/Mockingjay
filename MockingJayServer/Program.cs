@@ -15,7 +15,8 @@ namespace MockingJayServer
         static void Main(string[] args)
         {
             ILogger logger = new GenericLogger();
-            const string url = "http://localhost:51111/";
+            string hostName = Dns.GetHostName();
+            string url = CreateUrl(args);
             try
             {
                 var app = new MockingJayApp(new MockEngine(), new ComplexValidator(
@@ -32,9 +33,10 @@ namespace MockingJayServer
                 route.Add("*", new FillController(app));
 
                 using (var server = new HttpServer(url,
-                    new HttpListener(), route , logger))
+                    new HttpListener(), route , logger, new ReportGenerator()))
                 {
                     server.StartListening();
+                    logger.Info($"Server listen on: {url}");
                     WriteLine("To stop server press any key...");
                     ReadKey();
                 }
@@ -44,6 +46,16 @@ namespace MockingJayServer
                 logger?.Fatal(ex);
                 ReadKey();
             }
+        }
+
+        private static string CreateUrl(string[] args)
+        {
+            if(args.Length == 1 && args[0] == "-h")
+            {
+                string hostName = Dns.GetHostName();
+                return $"http://{hostName}:51111/";
+            }
+            return "http://localhost:51111/";
         }
     }
 }

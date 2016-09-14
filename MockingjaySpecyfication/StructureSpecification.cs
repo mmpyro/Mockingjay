@@ -99,7 +99,7 @@ namespace MockingjaySpecyfication
             var @return = conf.Return;
             //Then
             Assert.That(conf.Url, Is.EqualTo("/users"));
-            Assert.That(conf.Type, Is.EqualTo(HttpMethodType.GET));
+            Assert.That(conf.Type, Is.EqualTo(HttpMethodType.GET.ToString()));
             CollectionAssert.AreEquivalent(conf.Headers, headers);
             Assert.That(@return.Content, Is.EqualTo("hello world"));
             Assert.That(@return.StatusCode, Is.EqualTo(200));

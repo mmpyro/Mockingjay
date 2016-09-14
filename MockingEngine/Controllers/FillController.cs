@@ -19,7 +19,7 @@ namespace MockingJay.Controllers
             Request request = new Request
             {
                 Url = httpContext.Request.Url,
-                Type = (HttpMethodType) Enum.Parse(typeof(HttpMethodType), httpContext.Request.HttpMethod),
+                Type = httpContext.Request.HttpMethod,
             };
             FillHeadersIfExists(httpContext,request);
             var responseStructure = mockingJayApp.Resolve(request);

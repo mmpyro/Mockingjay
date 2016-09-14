@@ -54,6 +54,7 @@
     <Compile Include="MockEngine.cs" />
     <Compile Include="MockingJayApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportPrinter.cs" />
     <Compile Include="Response.cs" />
     <Compile Include="Validation\ComplexValidator.cs" />
     <Compile Include="Validation\IValidator.cs" />
