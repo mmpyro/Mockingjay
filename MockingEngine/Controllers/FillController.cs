@@ -1,7 +1,5 @@
 ﻿using MockingJayRoutes;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MockingJay.Controllers
 {
@@ -26,8 +24,9 @@ namespace MockingJay.Controllers
             var response = httpContext.Response;
 
             response.StatusCode = responseStructure.StatusCode;
-            response.FillContent(responseStructure.Content, httpContext.Request.ContentEncoding);
             responseStructure.Headers.ForEach(t => response.Headers.Add(t.Name, t.Value));
+            response.FillContent(responseStructure.Content, httpContext.Request.ContentEncoding);
+            
             response.Close();
         }
 
