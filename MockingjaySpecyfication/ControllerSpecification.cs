@@ -191,7 +191,11 @@ namespace MockingjaySpecyfication
             //When
             routes.Resolve(context);
             //Then
-            response.Received().FillContent(Arg.Any<string>(), Arg.Any<Encoding>());
+            Received.InOrder(() =>
+            {
+                response.FillContent(Arg.Any<string>(), Arg.Any<Encoding>());
+                response.Close();
+            });
             Assert.That(response.StatusCode, Is.EqualTo(200));
             Assert.That(response.Body, Is.EqualTo("hello world"));
             Assert.That(response.Headers["Etag"], Is.EqualTo("0000"));
@@ -218,7 +222,11 @@ namespace MockingjaySpecyfication
             //When
             routes.Resolve(context);
             //Then
-            response.Received().FillContent(Arg.Any<string>(), Arg.Any<Encoding>());
+            Received.InOrder(() =>
+            {
+                response.FillContent(Arg.Any<string>(), Arg.Any<Encoding>());
+                response.Close();
+            });
             Assert.That(response.StatusCode, Is.EqualTo(200));
         }
 

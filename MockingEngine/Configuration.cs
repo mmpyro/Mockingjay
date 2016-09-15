@@ -43,8 +43,7 @@ namespace MockingJay
             var req = obj as Request;
             if(req != null)
             {
-                return Url.Equals(req.Url) && Type.Equals(req.Type)
-                        && req.Headers.OrderBy(t => t.Name).SequenceEqual(Headers.OrderBy(t => t.Name));
+                return Url.Equals(req.Url) && Type.Equals(req.Type) && Headers.All(t => req.Headers.Contains(t));
             }
             return false;
         }
@@ -53,10 +52,6 @@ namespace MockingJay
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(Url).Append(Type.ToString());
-            foreach (var item in Headers)
-            {
-                sb.Append(item.Name + item.Value);
-            }
             return sb.ToString().GetHashCode();
         }
     }
