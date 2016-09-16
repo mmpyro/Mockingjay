@@ -230,6 +230,35 @@ namespace MockingjaySpecyfication
             Assert.That(response.StatusCode, Is.EqualTo(200));
         }
 
+        [Test]
+        public void ShouldReturnsAllRegisteredConfigurations()
+        {
+            //Given
+            const string url = "http://localhost:8080/mockingJay/configurations?items=10&page=0";
+            var request = Substitute.For<IHttpRequest>();
+            var response = Substitute.For<IHttpResponse>();
+            request.HttpMethod.Returns(t => "GET");
+            request.Url.Returns(t => url);
+            var mockingJayApp = new MockingJayApp(new MockEngine(), CreateComplexValidator());
+            RouteManager routes = new RouteManager();
+            routes.Add("http://localhost:8080/mockingJay/configurations", new GetAllConfigurationController(mockingJayApp,
+                                                                                        new ParserFactory(),
+                                                                                        new PageBuilder<Configuration>()));
+            var context = Substitute.For<IHttpContext>();
+            context.Request = request;
+            context.Response = response;
+            RegisterManyMessages(mockingJayApp, 20);
+            //When
+            routes.Resolve(context);
+            //Then
+            Received.InOrder(() =>
+            {
+                response.FillContent(Arg.Any<string>(), Arg.Any<Encoding>());
+                response.Close();
+            });
+            Assert.That(response.StatusCode, Is.EqualTo(200));
+        }
+
         private void RegisterManyMessages(MockingJayApp mockingJayApp, int number)
         {
             for (int i = 0; i < number; i++) {

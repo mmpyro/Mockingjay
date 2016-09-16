@@ -28,6 +28,9 @@ namespace MockingJayServer
                 route.Add($"{url}mockingJay/register", new RegisterController(app));
                 route.Add($"{url}mockingJay/remove/all", new RemoveAllController(app));
                 route.Add($"{url}mockingJay/remove", new RemoveController(app));
+                route.Add($"{url}mockingJay/configurations", new GetAllConfigurationController(app, 
+                                                                                        new ParserFactory(),
+                                                                                        new PageBuilder<Configuration>()));
                 route.Add($"{url}mockingJay/requests", new GetAllRequestsController(app, new ParserFactory() 
                                                                                         ,new PageBuilder<Request>()));
                 route.Add("*", new FillController(app));

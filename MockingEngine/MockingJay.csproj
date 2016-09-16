@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Configuration.cs" />
     <Compile Include="Controllers\FillController.cs" />
+    <Compile Include="Controllers\GetAllConfigurationController.cs" />
     <Compile Include="Controllers\GetAllRequestsController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\RemoveAllController.cs" />
