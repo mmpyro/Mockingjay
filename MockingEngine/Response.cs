@@ -7,10 +7,12 @@ namespace MockingJay
         public string Content { get; set; }
         public List<Header> Headers { get; set; }
         public int StatusCode { get; set; }
+        public string ContentType { get; set; }
 
         public Response()
         {
             Headers = new List<Header>();
+            ContentType = "application/json";
         }
     }
 

@@ -31,6 +31,7 @@ namespace MockingJayAcceptanceCriteria
                 Return = new Response
                 {
                     StatusCode = 200,
+                    ContentType = "text/plain",
                     Content = "Hello World",
                     Headers = HeaderHelper.CreateHeaders("ETag:0000","Access-Control-Allow-Origin:*")
                 }
