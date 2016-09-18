@@ -67,12 +67,16 @@
       <Name>MockingJayRoutes</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Dockerfile">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <PropertyGroup>
+    <TagName>mockingjay</TagName>
+  </PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
+  <Target Name="DockerBuild">
+    <Exec Command="docker build -t $(TagName) -f $(OutputPath)Dockerfile $(OutputPath)"/>
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
