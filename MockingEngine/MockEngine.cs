@@ -20,7 +20,7 @@ namespace MockingJay
         {
             var req = configuration.CreateRequest();
             if (_dict.ContainsKey(req))
-                throw new ArgumentException("This request was register before.");
+                throw new InvalidOperationException("This request was register before.");
             _dict.Add(req, configuration);
         }
 

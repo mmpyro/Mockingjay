@@ -79,7 +79,7 @@ namespace MockingjaySpecyfication
             //When 
             mock.Register(configBuilder.WithUrl(url));
 
-            var ex = Assert.Throws<ArgumentException>(() =>
+            var ex = Assert.Throws<InvalidOperationException>(() =>
             {
                 mock.Register(configBuilder.WithUrl(url));
             });

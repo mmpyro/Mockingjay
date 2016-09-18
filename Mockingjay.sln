@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockingJayServer", "Mocking
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockingJayRoutes", "MockingJayRoutes\MockingJayRoutes.csproj", "{60120C05-918A-4F42-86EB-8ABCC102D339}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockingJayAcceptanceCriteria", "MockingJayAcceptanceCriteria\MockingJayAcceptanceCriteria.csproj", "{0B11D4EC-8D34-43BC-BA09-0418FE4C5CDE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{60120C05-918A-4F42-86EB-8ABCC102D339}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60120C05-918A-4F42-86EB-8ABCC102D339}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60120C05-918A-4F42-86EB-8ABCC102D339}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B11D4EC-8D34-43BC-BA09-0418FE4C5CDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B11D4EC-8D34-43BC-BA09-0418FE4C5CDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B11D4EC-8D34-43BC-BA09-0418FE4C5CDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B11D4EC-8D34-43BC-BA09-0418FE4C5CDE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
